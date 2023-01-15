@@ -16,6 +16,7 @@ const coruscantGameId = 4238077359;
 const TOKEN = dotenv.parsed.TOKEN;
 const COOKIE = dotenv.parsed.COOKIE;
 const TRACKERCHANNEL = process.env.TRACKER_CHANNEL;
+const TRACKER_PING_ROLE = process.env.TRACKER_PING_ROLE;
 
 const JSON_FILE = path.join(__dirname, "users.json");
 
@@ -190,6 +191,7 @@ setInterval(async () => {
             });
             const row = createRow(d["userPresences"][0], true);
             await channel.send({
+              content:`<@&${TRACKER_PING_ROLE}>`,
               embeds: [embed],
               components: [row],
             });
